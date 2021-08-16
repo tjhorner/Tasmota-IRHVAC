@@ -707,7 +707,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
     @property
     def current_temperature(self):
         """Return the sensor temperature."""
-        return self._cur_temp
+        return (self._cur_temp - 32) * (5/9)
 
     @property
     def hvac_mode(self):
@@ -1002,7 +1002,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
             "Power": self.power_mode,
             "Mode": self._hvac_mode,
             "Celsius": self._celsius,
-            "Temp": self._target_temp,
+            "Temp": round(self._target_temp),
             "FanSpeed": fan_speed,
             "SwingV": swing_v,
             "SwingH": swing_h,
