@@ -55,6 +55,8 @@ from homeassistant.const import (
     PRECISION_HALVES,
     PRECISION_TENTHS,
     PRECISION_WHOLE,
+    TEMP_CELSIUS,
+    TEMP_FAHRENHEIT,
     STATE_ON,
     STATE_OFF,
     STATE_UNKNOWN
@@ -470,7 +472,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
         self._min_temp = min_temp
         self._max_temp = max_temp
         self._target_temp = target_temp
-        self._unit = hass.config.units.temperature_unit
+        self._unit = TEMP_CELSIUS if celsius.lower() == "on" else TEMP_FAHRENHEIT
         self._support_flags = SUPPORT_FLAGS
         if away_temp is not None:
             self._support_flags = SUPPORT_FLAGS | SUPPORT_PRESET_MODE
