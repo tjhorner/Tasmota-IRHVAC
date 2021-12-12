@@ -975,7 +975,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
         await self.hass.async_add_executor_job(self.send_ir)
         await self.async_update_ha_state()
 
-    def send_ir(self):
+    async def send_ir(self):
         """Send the payload to tasmota mqtt topic."""
         fan_speed = self.fan_mode
         # tweak for some ELECTRA_AC devices
