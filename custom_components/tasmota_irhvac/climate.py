@@ -468,7 +468,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
             self.power_mode = STATE_ON
             self._enabled = True
         self._active = False
-        self._cur_temp = None
+        self._cur_temp = 0
         self._min_temp = min_temp
         self._max_temp = max_temp
         self._target_temp = target_temp
