@@ -907,7 +907,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
     async def async_send_cmd(self, attr_update=False):
         if attr_update:
             await self.async_update_state_attrs()
-        await self.hass.async_add_executor_job(self.send_ir)
+        await self.send_ir()
         await self.async_update_ha_state()
 
     async def async_update_state_attrs(self):
@@ -972,7 +972,7 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
         elif preset_mode == PRESET_NONE and self._is_away:
             self._is_away = False
             self._target_temp = self._saved_target_temp
-        await self.hass.async_add_executor_job(self.send_ir)
+        await self.send_ir()
         await self.async_update_ha_state()
 
     async def send_ir(self):
