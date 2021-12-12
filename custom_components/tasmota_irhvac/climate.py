@@ -1017,4 +1017,4 @@ class TasmotaIrhvac(ClimateEntity, RestoreEntity):
         }
         payload = (json.dumps(payload_data))
         # Publish mqtt message
-        mqtt.async_publish(self.hass, self.topic, payload)
+        await mqtt.async_publish(self.hass, self.topic, payload)
